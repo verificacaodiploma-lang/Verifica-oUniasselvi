@@ -154,7 +154,7 @@
     <div class="card">
       <h1>Verifique a autenticidade do diploma</h1>
       <div class="search-box">
-        <input type="text" id="codigo" placeholder="Digite o código do diploma">
+        <input type="text" id="codigo" placeholder="Digite o número de registro do diploma">
         <button onclick="verificar()">Verificar</button>
       </div>
       <div class="result" id="resultado"></div>
@@ -171,29 +171,30 @@
       const resultado = document.getElementById('resultado');
 
       if (codigo === "") {
-        resultado.innerHTML = "Por favor, insira um código para verificar.";
+        resultado.innerHTML = "Por favor, insira o número de registro para verificar.";
         resultado.classList.add("active");
         return;
       }
 
-      // Exemplo de diploma válido (você pode substituir pelo seu banco de dados JSON futuramente)
+      // Banco de dados de diplomas
       const diplomas = {
-        "12345": {
-          nome: "Edson da Silva Menezes",
-          curso: "Graduação em Psicologia",
-          instituicao: "UNIASSELVI",
-          conclusao: "12/08/2024"
+        "64567-75": {
+          nome: "Vinícius Honorato Demartine",
+          curso: "Bacharel em Psicomotricidade",
+          instituicao: "CENTRO UNIVERSITÁRIO LEONARDO DA VINCI",
+          conclusao: "06/02/2025"
         }
       };
 
       if (diplomas[codigo]) {
         const d = diplomas[codigo];
         resultado.innerHTML = `
-          <strong>Diploma válido ✅</strong><br>
+          <strong style="color:green;">Diploma válido ✅</strong><br>
           <b>Nome:</b> ${d.nome}<br>
           <b>Curso:</b> ${d.curso}<br>
           <b>Instituição:</b> ${d.instituicao}<br>
-          <b>Data de Conclusão:</b> ${d.conclusao}
+          <b>Data de Conclusão:</b> ${d.conclusao}<br>
+          <b>Número de Registro:</b> ${codigo}
         `;
       } else {
         resultado.innerHTML = "<strong style='color:#b00'>Código não encontrado ❌</strong>";
