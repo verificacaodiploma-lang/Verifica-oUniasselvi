@@ -35,6 +35,19 @@
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo img {
+      height: 46px;
+      width: auto;
+      border-radius: 4px;
     }
 
     .brand {
@@ -45,7 +58,7 @@
     .slogan {
       font-size: 14px;
       font-weight: 500;
-      opacity: 0.8;
+      opacity: 0.85;
     }
 
     main {
@@ -146,8 +159,13 @@
 
 <body>
   <header>
-    <div class="brand">UNIASSELVI</div>
-    <div class="slogan">Sistema de Verificação de Diplomas</div>
+    <div class="logo">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/b/bb/Logo_Uniasselvi.png" alt="Logo UNIASSELVI">
+      <div>
+        <div class="brand">UNIASSELVI</div>
+        <div class="slogan">Sistema de Verificação de Diplomas</div>
+      </div>
+    </div>
   </header>
 
   <main>
@@ -183,6 +201,12 @@
           curso: "Tecnólogo em Podologia",
           instituicao: "Centro Universitário Leonardo da Vinci (UNIASSELVI)",
           conclusao: "02/06/2019"
+        },
+        "74577-54": {
+          nome: "Patrícia Rafael Cardoso da Silva",
+          curso: "Bacharel em Teologia",
+          instituicao: "Centro Universitário Leonardo da Vinci (UNIASSELVI)",
+          conclusao: "10/08/2025"
         }
       };
 
