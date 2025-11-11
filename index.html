@@ -185,7 +185,7 @@
 
   <script>
     function verificar() {
-      const codigo = document.getElementById('codigo').value.trim();
+      let codigo = document.getElementById('codigo').value.trim();
       const resultado = document.getElementById('resultado');
 
       if (codigo === "") {
@@ -194,27 +194,30 @@
         return;
       }
 
+      // Remove traços e espaços para evitar erros de digitação
+      const codigoLimpo = codigo.replace(/[-\s]/g, "");
+
       // Banco de dados de diplomas
       const diplomas = {
-        "36655-74": {
+        "3665574": {
           nome: "Grécia da Silva Cardoso",
           curso: "Tecnólogo em Podologia",
           instituicao: "Centro Universitário Leonardo da Vinci (UNIASSELVI)",
           conclusao: "02/06/2019"
         },
-        "74577-54": {
+        "7457754": {
           nome: "Patrícia Rafael Cardoso da Silva",
           curso: "Bacharel em Teologia",
           instituicao: "Centro Universitário Leonardo da Vinci (UNIASSELVI)",
           conclusao: "10/08/2025"
         },
-        "54677-75": {
+        "5467775": {
           nome: "Silvia Thomaz Moravec",
           curso: "Tecnólogo em Terapia Integrativa e Complementar",
           instituicao: "Centro Universitário Leonardo da Vinci (UNIASSELVI)",
           conclusao: "20/08/2025"
         },
-        "755677-75": {
+        "75567775": {
           nome: "Taiane Lucas de Souza",
           curso: "Licenciatura em Química",
           instituicao: "Centro Universitário Leonardo da Vinci (UNIASSELVI)",
@@ -222,8 +225,8 @@
         }
       };
 
-      if (diplomas[codigo]) {
-        const d = diplomas[codigo];
+      if (diplomas[codigoLimpo]) {
+        const d = diplomas[codigoLimpo];
         resultado.innerHTML = `
           <strong style="color:green;">Diploma válido ✅</strong><br>
           <b>Nome:</b> ${d.nome}<br>
@@ -241,4 +244,4 @@
   </script>
 </body>
 
-</html>
+  </html>
