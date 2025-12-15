@@ -1,334 +1,133 @@
 <!doctype html>
-<html lang="pt-BR">
 
+<html lang="pt-BR">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>UNIASSELVI — Sistema de Verificação de Diplomas</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Uniasselvi — Verificação de Diploma</title>
   <style>
     :root {
-      --bg: #ffcc00;
-      --card: #fff;
-      --accent: #000;
-      --muted: #3a3a3a;
+      --bg: #ffffff;
+      --card: #ffffff;
+      --accent: #000000;
+      --muted: #6b7280;
+      --success: #16a34a;
+      --border: #e5e7eb;
     }
-
-    * {
-      box-sizing: border-box;
-    }
-
+    * { box-sizing: border-box; }
     body {
-      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial;
-      background: var(--bg);
       margin: 0;
-      color: #111;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: #111827;
     }
-
     header {
-      background: var(--accent);
-      color: var(--bg);
-      padding: 20px 28px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 10px;
+      border-bottom: 1px solid var(--border);
+      padding: 20px 16px;
     }
-
-    .logo {
+    .brand {
+      max-width: 960px;
+      margin: 0 auto;
       display: flex;
       align-items: center;
       gap: 12px;
     }
-
-    .logo img {
-      height: 46px;
-      width: auto;
-      border-radius: 4px;
-    }
-
-    .brand {
-      font-weight: 800;
-      font-size: 22px;
-    }
-
-    .slogan {
-      font-size: 14px;
-      font-weight: 500;
-      opacity: 0.85;
-    }
-
-    main {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 40px 20px;
-    }
-
-    .card {
-      background: var(--card);
-      border-radius: 16px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-      padding: 40px 30px;
-      max-width: 480px;
-      width: 100%;
-      text-align: center;
-      animation: fadeIn 0.8s ease;
-    }
-
-    .card h1 {
+    .brand h1 {
       font-size: 20px;
+      margin: 0;
       font-weight: 700;
       color: var(--accent);
-      margin-bottom: 20px;
     }
-
-    .search-box {
-      display: flex;
+    main {
+      padding: 24px 16px 48px;
+    }
+    .wrap {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,.04);
+    }
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #ecfdf5;
+      color: var(--success);
+      border: 1px solid #bbf7d0;
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+    .field {
+      display: grid;
+      grid-template-columns: 200px 1fr;
       gap: 10px;
-      margin-bottom: 24px;
+      padding: 10px 0;
+      border-bottom: 1px dashed var(--border);
     }
-
-    .search-box input {
-      flex: 1;
-      padding: 14px 16px;
-      border-radius: 8px;
-      border: 2px solid var(--accent);
-      font-size: 15px;
-      outline: none;
-      transition: border-color 0.2s;
-    }
-
-    .search-box input:focus {
-      border-color: #333;
-    }
-
-    .search-box button {
-      background: var(--accent);
-      color: var(--bg);
-      border: none;
-      padding: 14px 20px;
-      border-radius: 8px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    .search-box button:hover {
-      background: #222;
-    }
-
-    .result {
-      display: none;
-      margin-top: 20px;
-      text-align: left;
-      font-size: 15px;
-      line-height: 1.6;
-    }
-
-    .result.active {
-      display: block;
-      animation: fadeIn 0.5s ease;
-    }
-
+    .field:last-child { border-bottom: none; }
+    .label { color: var(--muted); font-weight: 600; }
+    .value { font-weight: 600; }
     footer {
-      background: var(--accent);
-      color: var(--bg);
-      text-align: center;
+      border-top: 1px solid var(--border);
       padding: 16px;
-      font-size: 14px;
+      color: var(--muted);
     }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    footer .wrap { display: flex; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+    @media (max-width: 640px) {
+      .field { grid-template-columns: 1fr; }
     }
   </style>
 </head>
-
 <body>
   <header>
-    <div class="logo">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/b/bb/Logo_Uniasselvi.png" alt="Logo UNIASSELVI">
-      <div>
-        <div class="brand">UNIASSELVI</div>
-        <div class="slogan">Sistema de Verificação de Diplomas</div>
+    <div class="brand">
+      <h1>Uniasselvi — Centro Universitário Leonardo da Vinci</h1>
+    </div>
+  </header>  <main>
+    <div class="wrap">
+      <div class="card">
+        <div class="status">● Diploma Ativo</div>
+        <div class="grid">
+          <div class="field">
+            <div class="label">Nome do(a) Diplomado(a)</div>
+            <div class="value">Dayany Xavier Silva</div>
+          </div>
+          <div class="field">
+            <div class="label">Instituição</div>
+            <div class="value">Centro Universitário Leonardo da Vinci — Uniasselvi</div>
+          </div>
+          <div class="field">
+            <div class="label">Curso</div>
+            <div class="value">Licenciatura em Matemática</div>
+          </div>
+          <div class="field">
+            <div class="label">Conclusão</div>
+            <div class="value">10/02/2025</div>
+          </div>
+          <div class="field">
+            <div class="label">Registro</div>
+            <div class="value">474567-86</div>
+          </div>
+        </div>
       </div>
     </div>
-  </header>
-
-  <main>
-    <div class="card">
-      <h1>Verifique a autenticidade do diploma</h1>
-      <div class="search-box">
-        <input type="text" id="codigo" placeholder="Digite o número de registro do diploma">
-        <button onclick="verificar()">Verificar</button>
-      </div>
-      <div class="result" id="resultado"></div>
+  </main>  <footer>
+    <div class="wrap">
+      <span>Sistema de Verificação de Diplomas</span>
+      <span>© Uniasselvi</span>
     </div>
-  </main>
-
-  <footer>
-    © 2025 UNIASSELVI — Todos os direitos reservados.
   </footer>
-
-  <script>
-    function verificar() {
-      let codigo = document.getElementById('codigo').value.trim();
-      const resultado = document.getElementById('resultado');
-
-      if (codigo === "") {
-        resultado.innerHTML = "Por favor, insira o número de registro para verificar.";
-        resultado.classList.add("active");
-        return;
-      }
-
-      const codigoLimpo = codigo.replace(/[-\s]/g, "");
-
-      const diplomas = {
-
-        "3665574": {
-          nome: "Grécia da Silva Cardoso",
-          curso: "Tecnólogo em Podologia",
-          instituicao: "Centro Universitário Leonardo da Vinci (UNIASSELVI)",
-          conclusao: "02/06/2019"
-        },
-        "7457754": {
-          nome: "Patrícia Rafael Cardoso da Silva",
-          curso: "Bacharel em Teologia",
-          instituicao: "Centro Universitário Leonardo da Vinci (UNIASSELVI)",
-          conclusao: "10/08/2025"
-        },
-        "5467775": {
-          nome: "Silvia Thomaz Moravec",
-          curso: "Tecnólogo em Terapia Integrativa e Complementar",
-          instituicao: "Centro Universitário Leonardo da Vinci (UNIASSELVI)",
-          conclusao: "20/08/2025"
-        },
-        "75567775": {
-          nome: "Taiane Lucas de Souza",
-          curso: "Licenciatura em Química",
-          instituicao: "Centro Universitário Leonardo da Vinci (UNIASSELVI)",
-          conclusao: "15/08/2025"
-        },
-        "4557775": {
-          nome: "Silvana da Rosa Ribeiro",
-          curso: "Bacharel em Terapia Ocupacional",
-          instituicao: "Centro Universitário Leonardo da Vinci (UNIASSELVI)",
-          conclusao: "10/08/2024"
-        },
-        "6447786": {
-          nome: "Thaiz Kétura Cajueiro Estivalet Bilhalva",
-          curso: "Pós-Graduação em Terapia Cognitiva Comportamental",
-          instituicao: "Centro Universitário Leonardo da Vinci (UNIASSELVI)",
-          conclusao: "10/08/2025"
-        },
-        "5766786": {
-          nome: "Wanderson Pereira Moreira",
-          curso: "Pós-Graduação em Metodologia do Ensino de Física",
-          instituicao: "Centro Universitário Leonardo da Vinci (UNIASSELVI)",
-          conclusao: "15/08/2024"
-        },
-        "4775586": {
-          nome: "Felipe Cardoso",
-          curso: "Licenciatura em Letras - Inglês",
-          instituicao: "Centro Universitário Leonardo da Vinci (UNIASSELVI)",
-          conclusao: "10/08/2025"
-        },
-        "57754675": {
-          nome: "Ione Fernanda da Silva",
-          curso: "Bacharel em Terapia Ocupacional",
-          instituicao: "Centro Universitario Leonardo da Vinci (UNIASSELVI)",
-          conclusao: "10/08/2025"
-        },
-        "6456775": {
-          nome: "Vinícius Honorato Demartine",
-          curso: "Bacharel em Psicomotricidade",
-          instituicao: "Centro Universitario Leonardo da Vinci (UNIASSELVI)",
-          conclusao: "06/02/2025"
-        },
-        "47546687": {
-          nome: "Jonatas Alves Gonçalves",
-          curso: "Bacharel em Terapia Ocupacional",
-          instituicao: "Centro Universitario Leonardo da Vinci (UNIASSELVI)",
-          conclusao: "10/08/2025"
-        },
-        "57544686": {
-          nome: "Luciano Dias de França",
-          curso: "Tecnólogo em Gestão da Tecnologia da Informação",
-          instituicao: "Centro Universitario Leonardo da Vinci (UNIASSELVI)",
-          conclusao: "13/06/2022"
-        },
-
-        /* ➕ ENVIADOS HOJE */
-        "5775575": {
-          nome: "Maria Dulce Guimarães Marques",
-          curso: "Tecnólogo em Terapia Integrativa e Complementar",
-          instituicao: "Centro Universitário Leonardo da Vinci (UNIASSELVI)",
-          conclusao: "10/08/2025"
-        },
-        "5775576": {
-          nome: "Felipe Cardoso",
-          curso: "Licenciatura em Letras - Inglês",
-          instituicao: "Centro Universitário Leonardo da Vinci (UNIASSELVI)",
-          conclusao: "10/08/2025"
-        },
-
-        /* ➕ GILMARA */
-        "4664576": {
-          nome: "Gilmara Alves dos Santos",
-          curso: "Bacharel em Terapia Ocupacional",
-          instituicao: "Centro Universitario Leonardo da Vinci (UNIASSELVI)",
-          conclusao: "13/08/2025"
-        },
-
-        /* ➕ VIVIANE */
-        "4755576": {
-          nome: "Viviane Duarte Caldeira",
-          curso: "Bacharel em Biomedicina",
-          instituicao: "Centro Universitário Leonardo da Vinci (UNIASSELVI)",
-          conclusao: "13/08/2024"
-        },
-
-        /* ➕ MARCOS ANTÔNIO — Novo Registro COMPLETO */
-        "47645687": {
-          nome: "Marcos Antônio Sadala dos Santos Júnior",
-          curso: "Licenciatura em Educação Física",
-          instituicao: "Centro Universitario Leonardo da Vinci (UNIASSELVI)",
-          conclusao: "10/10/2025"
-        }
-
-      };
-
-      if (diplomas[codigoLimpo]) {
-        const d = diplomas[codigoLimpo];
-        resultado.innerHTML = `
-          <strong style="color:green;">Diploma válido ✅</strong><br>
-          <b>Nome:</b> ${d.nome}<br>
-          <b>Curso:</b> ${d.curso}<br>
-          <b>Instituição:</b> ${d.instituicao}<br>
-          <b>Data de Conclusão:</b> ${d.conclusao}<br>
-          <b>Número de Registro:</b> ${codigo}
-        `;
-      } else {
-        resultado.innerHTML = "<strong style='color:#b00'>Código não encontrado ❌</strong>";
-      }
-
-      resultado.classList.add("active");
-    }
-  </script>
-
 </body>
-
 </html>
