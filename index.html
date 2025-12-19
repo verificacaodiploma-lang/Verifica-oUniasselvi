@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Uniasselvi — Verificação de Diploma</title>
+
   <style>
     :root {
       --bg: #ffffff;
@@ -13,17 +14,21 @@
       --success: #16a34a;
       --border: #e5e7eb;
     }
+
     * { box-sizing: border-box; }
+
     body {
       margin: 0;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       background: var(--bg);
       color: #111827;
     }
+
     header {
       border-bottom: 1px solid var(--border);
       padding: 20px 16px;
     }
+
     .brand {
       max-width: 960px;
       margin: 0 auto;
@@ -31,19 +36,23 @@
       align-items: center;
       gap: 12px;
     }
+
     .brand h1 {
       font-size: 20px;
       margin: 0;
       font-weight: 700;
       color: var(--accent);
     }
+
     main {
       padding: 24px 16px 48px;
     }
+
     .wrap {
       max-width: 960px;
       margin: 0 auto;
     }
+
     .card {
       background: var(--card);
       border: 1px solid var(--border);
@@ -51,6 +60,7 @@
       padding: 20px;
       box-shadow: 0 8px 20px rgba(0,0,0,.04);
     }
+
     .status {
       display: inline-flex;
       align-items: center;
@@ -63,11 +73,13 @@
       font-weight: 700;
       margin-bottom: 16px;
     }
+
     .grid {
       display: grid;
       grid-template-columns: 1fr;
       gap: 14px;
     }
+
     .field {
       display: grid;
       grid-template-columns: 200px 1fr;
@@ -75,25 +87,37 @@
       padding: 10px 0;
       border-bottom: 1px dashed var(--border);
     }
+
     .field:last-child { border-bottom: none; }
-    .label { color: var(--muted); font-weight: 600; }
-    .value { font-weight: 600; }
+
+    .label {
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .value {
+      font-weight: 600;
+    }
+
     footer {
       border-top: 1px solid var(--border);
       padding: 16px;
       color: var(--muted);
     }
+
     footer .wrap {
       display: flex;
       justify-content: space-between;
       gap: 8px;
       flex-wrap: wrap;
     }
+
     @media (max-width: 640px) {
       .field { grid-template-columns: 1fr; }
     }
   </style>
 </head>
+
 <body>
 
 <header>
@@ -108,9 +132,10 @@
       <div class="status">● Diploma Ativo</div>
 
       <div class="grid">
+
         <div class="field">
           <div class="label">Nome do(a) Diplomado(a)</div>
-          <div class="value">Marcos Antônio Sadala dos Santos Júnior</div>
+          <div class="value">Isadora Ribeiro dos Santos</div>
         </div>
 
         <div class="field">
@@ -120,18 +145,19 @@
 
         <div class="field">
           <div class="label">Curso</div>
-          <div class="value">Licenciatura em Educação Física</div>
+          <div class="value">Bacharel em Terapia Ocupacional</div>
         </div>
 
         <div class="field">
           <div class="label">Conclusão</div>
-          <div class="value">10/10/2025</div>
+          <div class="value">02/12/2025</div>
         </div>
 
         <div class="field">
           <div class="label">Registro</div>
-          <div class="value">476456-87</div>
+          <div class="value">6786567-76</div>
         </div>
+
       </div>
     </div>
   </div>
