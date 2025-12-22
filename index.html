@@ -12,6 +12,7 @@
       --accent: #000000;
       --muted: #6b7280;
       --success: #16a34a;
+      --error: #dc2626;
       --border: #e5e7eb;
     }
 
@@ -19,52 +20,54 @@
 
     body {
       margin: 0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-family: system-ui, Arial, sans-serif;
       background: var(--bg);
       color: #111827;
     }
 
-    header {
+    header, footer {
       border-bottom: 1px solid var(--border);
       padding: 20px 16px;
     }
 
-    .brand {
-      max-width: 960px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .brand h1 {
-      font-size: 20px;
-      margin: 0;
-      font-weight: 700;
-      color: var(--accent);
-    }
-
-    main {
-      padding: 24px 16px 48px;
-    }
+    footer { border-top: 1px solid var(--border); }
 
     .wrap {
       max-width: 960px;
-      margin: 0 auto;
+      margin: auto;
     }
 
+    h1 { margin: 0; font-size: 20px; }
+
     .card {
-      background: var(--card);
       border: 1px solid var(--border);
       border-radius: 14px;
       padding: 20px;
+      margin-top: 24px;
       box-shadow: 0 8px 20px rgba(0,0,0,.04);
     }
 
+    input {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 12px;
+      font-size: 15px;
+    }
+
+    button {
+      padding: 12px 18px;
+      border-radius: 8px;
+      border: none;
+      background: #000;
+      color: #fff;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
     .status {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
+      display: inline-block;
       background: #ecfdf5;
       color: var(--success);
       border: 1px solid #bbf7d0;
@@ -74,10 +77,10 @@
       margin-bottom: 16px;
     }
 
-    .grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 14px;
+    .error {
+      color: var(--error);
+      margin-top: 12px;
+      font-weight: 600;
     }
 
     .field {
@@ -88,29 +91,8 @@
       border-bottom: 1px dashed var(--border);
     }
 
-    .field:last-child { border-bottom: none; }
-
-    .label {
-      color: var(--muted);
-      font-weight: 600;
-    }
-
-    .value {
-      font-weight: 600;
-    }
-
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 16px;
-      color: var(--muted);
-    }
-
-    footer .wrap {
-      display: flex;
-      justify-content: space-between;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
+    .label { color: var(--muted); font-weight: 600; }
+    .value { font-weight: 600; }
 
     @media (max-width: 640px) {
       .field { grid-template-columns: 1fr; }
@@ -121,46 +103,53 @@
 <body>
 
 <header>
-  <div class="brand">
+  <div class="wrap">
     <h1>Uniasselvi — Centro Universitário Leonardo da Vinci</h1>
   </div>
 </header>
 
-<main>
-  <div class="wrap">
-    <div class="card">
-      <div class="status">● Diploma Ativo</div>
+<main class="wrap">
 
-      <div class="grid">
-
-        <div class="field">
-          <div class="label">Nome do(a) Diplomado(a)</div>
-          <div class="value">Daniele Arruda dos Santos</div>
-        </div>
-
-        <div class="field">
-          <div class="label">Instituição</div>
-          <div class="value">Centro Universitário Leonardo da Vinci — Uniasselvi</div>
-        </div>
-
-        <div class="field">
-          <div class="label">Curso</div>
-          <div class="value">Licenciatura em Biblioteconomia</div>
-        </div>
-
-        <div class="field">
-          <div class="label">Conclusão</div>
-          <div class="value">15/08/2025</div>
-        </div>
-
-        <div class="field">
-          <div class="label">Registro</div>
-          <div class="value">364446-87</div>
-        </div>
-
-      </div>
-    </div>
+  <!-- VERIFICAÇÃO -->
+  <div class="card">
+    <h3>Verificação de Diploma</h3>
+    <input type="text" id="codigo" placeholder="Digite o número de registro">
+    <button onclick="verificar()">Verificar</button>
+    <div id="erro" class="error"></div>
   </div>
+
+  <!-- RESULTADO -->
+  <div class="card" id="resultado" style="display:none">
+
+    <div class="status">● Diploma Ativo</div>
+
+    <div class="field">
+      <div class="label">Nome do(a) Diplomado(a)</div>
+      <div class="value">Daniele Arruda dos Santos</div>
+    </div>
+
+    <div class="field">
+      <div class="label">Instituição</div>
+      <div class="value">Centro Universitário Leonardo da Vinci — Uniasselvi</div>
+    </div>
+
+    <div class="field">
+      <div class="label">Curso</div>
+      <div class="value">Licenciatura em Biblioteconomia</div>
+    </div>
+
+    <div class="field">
+      <div class="label">Conclusão</div>
+      <div class="value">15/08/2025</div>
+    </div>
+
+    <div class="field">
+      <div class="label">Registro</div>
+      <div class="value">364446-87</div>
+    </div>
+
+  </div>
+
 </main>
 
 <footer>
@@ -169,6 +158,21 @@
     <span>© Uniasselvi</span>
   </div>
 </footer>
+
+<script>
+  function verificar() {
+    const codigo = document.getElementById("codigo").value.trim();
+    const correto = "364446-87";
+
+    if (codigo === correto) {
+      document.getElementById("resultado").style.display = "block";
+      document.getElementById("erro").innerText = "";
+    } else {
+      document.getElementById("resultado").style.display = "none";
+      document.getElementById("erro").innerText = "Registro não encontrado.";
+    }
+  }
+</script>
 
 </body>
 </html>
