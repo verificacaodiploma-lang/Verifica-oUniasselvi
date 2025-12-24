@@ -125,27 +125,27 @@
 
     <div class="field">
       <div class="label">Nome do(a) Diplomado(a)</div>
-      <div class="value">Daniele Arruda dos Santos</div>
+      <div class="value" id="nome"></div>
     </div>
 
     <div class="field">
       <div class="label">Instituição</div>
-      <div class="value">Centro Universitário Leonardo da Vinci — Uniasselvi</div>
+      <div class="value" id="instituicao"></div>
     </div>
 
     <div class="field">
       <div class="label">Curso</div>
-      <div class="value">Licenciatura em Biblioteconomia</div>
+      <div class="value" id="curso"></div>
     </div>
 
     <div class="field">
       <div class="label">Conclusão</div>
-      <div class="value">15/08/2025</div>
+      <div class="value" id="conclusao"></div>
     </div>
 
     <div class="field">
       <div class="label">Registro</div>
-      <div class="value">364446-87</div>
+      <div class="value" id="registro"></div>
     </div>
 
   </div>
@@ -160,16 +160,41 @@
 </footer>
 
 <script>
+  const diplomas = {
+    "364446-87": {
+      nome: "Daniele Arruda dos Santos",
+      instituicao: "Centro Universitário Leonardo da Vinci — Uniasselvi",
+      curso: "Licenciatura em Biblioteconomia",
+      conclusao: "15/08/2025",
+      registro: "364446-87"
+    },
+    "64567-75": {
+      nome: "Vinícius Honorato Demartine",
+      instituicao: "Centro Universitário Leonardo da Vinci — Uniasselvi",
+      curso: "Licenciatura em Psicomotricidade",
+      conclusao: "06/02/2025",
+      registro: "64567-75"
+    }
+  };
+
   function verificar() {
     const codigo = document.getElementById("codigo").value.trim();
-    const correto = "364446-87";
+    const erro = document.getElementById("erro");
+    const resultado = document.getElementById("resultado");
 
-    if (codigo === correto) {
-      document.getElementById("resultado").style.display = "block";
-      document.getElementById("erro").innerText = "";
+    if (diplomas[codigo]) {
+      const d = diplomas[codigo];
+      document.getElementById("nome").innerText = d.nome;
+      document.getElementById("instituicao").innerText = d.instituicao;
+      document.getElementById("curso").innerText = d.curso;
+      document.getElementById("conclusao").innerText = d.conclusao;
+      document.getElementById("registro").innerText = d.registro;
+
+      resultado.style.display = "block";
+      erro.innerText = "";
     } else {
-      document.getElementById("resultado").style.display = "none";
-      document.getElementById("erro").innerText = "Registro não encontrado.";
+      resultado.style.display = "none";
+      erro.innerText = "Registro não encontrado.";
     }
   }
 </script>
