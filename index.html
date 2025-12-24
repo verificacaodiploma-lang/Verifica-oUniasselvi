@@ -30,14 +30,27 @@
       padding: 20px 16px;
     }
 
-    footer { border-top: 1px solid var(--border); }
+    footer {
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      color: var(--muted);
+    }
 
     .wrap {
       max-width: 960px;
       margin: auto;
     }
 
-    h1 { margin: 0; font-size: 20px; }
+    h1 {
+      margin: 0;
+      font-size: 20px;
+    }
+
+    h3 {
+      margin-top: 0;
+    }
 
     .card {
       border: 1px solid var(--border);
@@ -85,17 +98,25 @@
 
     .field {
       display: grid;
-      grid-template-columns: 200px 1fr;
+      grid-template-columns: 220px 1fr;
       gap: 10px;
       padding: 10px 0;
       border-bottom: 1px dashed var(--border);
     }
 
-    .label { color: var(--muted); font-weight: 600; }
-    .value { font-weight: 600; }
+    .label {
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .value {
+      font-weight: 600;
+    }
 
     @media (max-width: 640px) {
-      .field { grid-template-columns: 1fr; }
+      .field {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -104,7 +125,7 @@
 
 <header>
   <div class="wrap">
-    <h1>Uniasselvi — Centro Universitário Leonardo da Vinci</h1>
+    <h1>Centro Universitário Leonardo da Vinci — Uniasselvi</h1>
   </div>
 </header>
 
@@ -153,7 +174,7 @@
 </main>
 
 <footer>
-  <div class="wrap">
+  <div class="wrap" style="display:flex; justify-content:space-between;">
     <span>Sistema de Verificação de Diplomas</span>
     <span>© Uniasselvi</span>
   </div>
@@ -174,6 +195,13 @@
       curso: "Licenciatura em Psicomotricidade",
       conclusao: "06/02/2025",
       registro: "64567-75"
+    },
+    "364456-76": {
+      nome: "Kelly Cristina Rodrigues de Freitas",
+      instituicao: "Centro Universitário Leonardo da Vinci — Uniasselvi",
+      curso: "Tecnólogo em Recursos Humanos",
+      conclusao: "14/08/2025",
+      registro: "364456-76"
     }
   };
 
