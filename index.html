@@ -162,7 +162,7 @@
   </div>
 </footer>
 
-<script>
+<<script>
   const diplomas = {
     "366456-87": {
       nome: "Jonathan Zamberlan",
@@ -219,8 +219,38 @@
       curso: "Licenciatura em Educação Física",
       conclusao: "01/12/2024",
       registro: "2567654-99"
+    },
+
+    "64567-75": {
+      nome: "Vinícius Honorato Demartine",
+      instituicao: "Centro Universário Leonardo da Vinci (Uniasselvi)",
+      curso: "Graduação em Psicomotricidade",
+      conclusao: "06/02/2025",
+      registro: "64567-75"
     }
   };
+
+  function verificar() {
+    const codigo = document.getElementById("codigo").value.trim();
+    const erro = document.getElementById("erro");
+    const resultado = document.getElementById("resultado");
+
+    if (diplomas[codigo]) {
+      const d = diplomas[codigo];
+      document.getElementById("nome").innerText = d.nome;
+      document.getElementById("instituicao").innerText = d.instituicao;
+      document.getElementById("curso").innerText = d.curso;
+      document.getElementById("conclusao").innerText = d.conclusao;
+      document.getElementById("registro").innerText = d.registro;
+
+      resultado.style.display = "block";
+      erro.innerText = "";
+    } else {
+      resultado.style.display = "none";
+      erro.innerText = "Registro não encontrado.";
+    }
+  }
+</script>
 
   function verificar() {
     const codigo = document.getElementById("codigo").value.trim();
