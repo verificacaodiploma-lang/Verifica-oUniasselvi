@@ -162,8 +162,9 @@
   </div>
 </footer>
 
-<<script>
+<script>
   const diplomas = {
+
     "366456-87": {
       nome: "Jonathan Zamberlan",
       instituicao: "Universidade Anhanguera",
@@ -171,6 +172,7 @@
       conclusao: "10/01/2025",
       registro: "366456-87"
     },
+
     "345446-77": {
       nome: "Flávia Maraísa de Souza Januário",
       instituicao: "Centro Universitário Leonardo da Vinci (Uniasselvi)",
@@ -178,6 +180,7 @@
       conclusao: "24/08/2021",
       registro: "345446-77"
     },
+
     "3777643-88": {
       nome: "Luana Nascimento Luggeri",
       instituicao: "Pontifícia Universidade Católica de Campinas",
@@ -185,6 +188,7 @@
       conclusao: "23/08/2024",
       registro: "3777643-88"
     },
+
     "363113-38": {
       nome: "Francisca Elaide Chagas de Lucena Santos",
       instituicao: "Centro Universitário Leonardo da Vinci (Uniasselvi)",
@@ -192,6 +196,7 @@
       conclusao: "14/08/2025",
       registro: "363113-38"
     },
+
     "357747-87": {
       nome: "Riscely Fernanda de Oliveira Chainho",
       instituicao: "Centro Universitário Leonardo da Vinci (Uniasselvi)",
@@ -199,6 +204,7 @@
       conclusao: "13/08/2019",
       registro: "357747-87"
     },
+
     "2578743-89": {
       nome: "Fabiano Siqueira",
       instituicao: "Centro Universitário Leonardo da Vinci (Uniasselvi)",
@@ -206,6 +212,7 @@
       conclusao: "24/08/2019",
       registro: "2578743-89"
     },
+
     "981357-23": {
       nome: "Maria Acidália Barros Silva",
       instituicao: "Centro Universitário Leonardo da Vinci (Uniasselvi)",
@@ -213,6 +220,7 @@
       conclusao: "07/08/2025",
       registro: "981357-23"
     },
+
     "2567654-99": {
       nome: "Gabriel Lima Lobato",
       instituicao: "Centro Universitário Leonardo da Vinci (Uniasselvi)",
@@ -223,34 +231,13 @@
 
     "64567-75": {
       nome: "Vinícius Honorato Demartine",
-      instituicao: "Centro Universário Leonardo da Vinci (Uniasselvi)",
+      instituicao: "Centro Universitário Leonardo da Vinci (Uniasselvi)",
       curso: "Graduação em Psicomotricidade",
       conclusao: "06/02/2025",
       registro: "64567-75"
     }
+
   };
-
-  function verificar() {
-    const codigo = document.getElementById("codigo").value.trim();
-    const erro = document.getElementById("erro");
-    const resultado = document.getElementById("resultado");
-
-    if (diplomas[codigo]) {
-      const d = diplomas[codigo];
-      document.getElementById("nome").innerText = d.nome;
-      document.getElementById("instituicao").innerText = d.instituicao;
-      document.getElementById("curso").innerText = d.curso;
-      document.getElementById("conclusao").innerText = d.conclusao;
-      document.getElementById("registro").innerText = d.registro;
-
-      resultado.style.display = "block";
-      erro.innerText = "";
-    } else {
-      resultado.style.display = "none";
-      erro.innerText = "Registro não encontrado.";
-    }
-  }
-</script>
 
   function verificar() {
     const codigo = document.getElementById("codigo").value.trim();
