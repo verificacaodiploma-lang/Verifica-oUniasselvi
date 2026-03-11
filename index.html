@@ -243,6 +243,14 @@
       curso: "Licenciatura em Letras-Espanhol",
       conclusao: "12/08/2021",
       registro: "235799-09"
+    },
+
+    "3589098-00": {
+      nome: "Fernando Augusto Bueno Rossetto",
+      instituicao: "Centro Universitário Leonardo da Vinci (Uniasselvi)",
+      curso: "Licenciatura em Matemática",
+      conclusao: "13/08/2021",
+      registro: "3589098-00"
     }
 
   };
@@ -254,6 +262,7 @@
 
     if (diplomas[codigo]) {
       const d = diplomas[codigo];
+
       document.getElementById("nome").innerText = d.nome;
       document.getElementById("instituicao").innerText = d.instituicao;
       document.getElementById("curso").innerText = d.curso;
